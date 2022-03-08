@@ -41,12 +41,14 @@
                                 <div class="mb-4">
                                     <h3>Sign In to <strong>TVShop</strong></h3>
                                     <p class="mb-4">Welcome to our fresh vegetable shop.</p>
+                                    
+                                    <span class="bg-danger text-white">${requestScope.mess}</span>
                                 </div>
                                 <form action="signin" method="post">
                                     <div class="form-group first">
                                         <label for="username">Username</label>
                                         <input name="username" type="text" class="form-control" id="username" required>
-
+                                        
                                     </div>
                                     <div class="form-group last mb-4">
                                         <label for="password">Password</label>

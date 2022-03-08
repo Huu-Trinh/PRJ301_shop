@@ -12,6 +12,7 @@ import model.Customer;
  * @author HuuTrinh
  */
 public class CustomerDAO extends DBContext{
+    
     public Customer login(String userName, String password){
         String sql="select * from customer "
                 + "where username=? and password=?";
@@ -21,7 +22,7 @@ public class CustomerDAO extends DBContext{
             pre.setString(2, password);
             ResultSet rs = pre.executeQuery();
             while(rs.next()){
-                if(rs.getString(1).equals(userName)&&rs.getString(2).equals(password)){
+                if(rs.getString(5).equals(userName)&&rs.getString(6).equals(password)){
                     Customer cus = new Customer(rs.getInt("cid"),
                             rs.getString("cname"),
                             rs.getString("cphone"),

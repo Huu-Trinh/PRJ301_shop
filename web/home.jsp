@@ -37,6 +37,7 @@
     </head>
     <body>
         <%@include file="./components/navbar.jsp" %>
+        
         <section id="home-section" class="hero">
             <div class="home-slider owl-carousel">
                 <div class="slider-item" style="background-image: url(images/bg_1.jpg);">

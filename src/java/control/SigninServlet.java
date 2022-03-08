@@ -47,6 +47,7 @@ public class SigninServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         request.getRequestDispatcher("sign-in.jsp").forward(request, response);
     }
 
@@ -61,19 +62,23 @@ public class SigninServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Lấy dữ liệu từ jsp
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        //Khởi tạo session
         HttpSession session = request.getSession();
+        
         CustomerDAO dao = new CustomerDAO();
+        //Check login
         Customer cus = dao.login(username, password);
+        
         if(cus != null){
             session.setAttribute("user", cus);
             request.getRequestDispatcher("home.jsp").forward(request, response);
         }else{
+            request.setAttribute("mess", "Wrong username or password please enter again!!");
             request.getRequestDispatcher("sign-in.jsp").forward(request, response);
         }
-        
-        
     }
 
     /**
