@@ -10,11 +10,12 @@ public class Product {
     private double price;
     private String image,description;
     private int status,cateID,sizeID;
+    private int promotion;
 
     public Product() {
     }
 
-    public Product(String pid, String pname, int quantity, double price, String image, String description, int status, int cateID, int sizeID) {
+    public Product(String pid, String pname, int quantity, double price, String image, String description, int status, int cateID, int sizeID, int promotion) {
         this.pid = pid;
         this.pname = pname;
         this.quantity = quantity;
@@ -24,6 +25,7 @@ public class Product {
         this.status = status;
         this.cateID = cateID;
         this.sizeID = sizeID;
+        this.promotion = promotion;
     }
 
     public String getPid() {
@@ -98,10 +100,19 @@ public class Product {
         this.sizeID = sizeID;
     }
 
+    public int getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(int promotion) {
+        this.promotion = promotion;
+    }
+
     @Override
     public String toString() {
-        return "Product{" + "pid=" + pid + ", pname=" + pname + ", quantity=" + quantity + ", price=" + price + ", image=" + image + ", description=" + description + ", status=" + status + ", cateID=" + cateID + ", sizeID=" + sizeID + '}';
+        return "Product{" + "pid=" + pid + ", pname=" + pname + ", quantity=" + quantity + ", price=" + price + ", image=" + image + ", description=" + description + ", status=" + status + ", cateID=" + cateID + ", sizeID=" + sizeID + ", promotion=" + promotion + '}';
     }
+
     
     
 }

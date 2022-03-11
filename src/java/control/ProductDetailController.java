@@ -1,6 +1,5 @@
 package control;
 
-import dal.CustomerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,15 +7,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Customer;
 
 /**
  *
  * @author HuuTrinh
  */
-@WebServlet(name = "SigninServlet", urlPatterns = {"/signin"})
-public class SigninServlet extends HttpServlet {
+@WebServlet(name = "ProductDetailController", urlPatterns = {"/productDetail"})
+public class ProductDetailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,7 +28,16 @@ public class SigninServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ProductDetailController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ProductDetailController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -47,8 +53,7 @@ public class SigninServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+        request.getRequestDispatcher("product-single.jsp").forward(request, response);
     }
 
     /**
@@ -62,23 +67,7 @@ public class SigninServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Lấy dữ liệu từ jsp
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        //Khởi tạo session
-        HttpSession session = request.getSession();
-        
-        CustomerDAO dao = new CustomerDAO();
-        //Check login
-        Customer cus = dao.login(username, password);
-        
-        if(cus != null){
-            session.setAttribute("user", cus);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        }else{
-            request.setAttribute("mess", "Wrong username or password please enter again!!");
-            request.getRequestDispatcher("sign-in.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -5,23 +5,11 @@ package model;
  * @author HuuTrinh
  */
 public class Customer {
-    private int cid; //cid int primary key identity(1,1)
-    private String cname, cphone, cAddress, username, password;
+
+    private int cid;
+    private String name, phone, address, email;
+    private Account account;
     private int status;
-
-    public Customer() {
-    }
-
-
-    public Customer(int cid, String cname, String cphone, String cAddress, String username, String password, int status) {
-        this.cid = cid;
-        this.cname = cname;
-        this.cphone = cphone;
-        this.cAddress = cAddress;
-        this.username = username;
-        this.password = password;
-        this.status = status;
-    }
 
     public int getCid() {
         return cid;
@@ -31,44 +19,44 @@ public class Customer {
         this.cid = cid;
     }
 
-    public String getCname() {
-        return cname;
+    public String getName() {
+        return name;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCphone() {
-        return cphone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setCphone(String cphone) {
-        this.cphone = cphone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getcAddress() {
-        return cAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setcAddress(String cAddress) {
-        this.cAddress = cAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public int getStatus() {
@@ -79,9 +67,22 @@ public class Customer {
         this.status = status;
     }
 
+    public Customer(int cid, String name, String phone, String address, String email, Account account, int status) {
+        this.cid = cid;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.account = account;
+        this.status = status;
+    }
+
+    public Customer() {
+    }
+
     @Override
     public String toString() {
-        return "Customer{" + "cid=" + cid + ", cname=" + cname + ", cphone=" + cphone + ", cAddress=" + cAddress + ", username=" + username + ", password=" + password + ", status=" + status + '}';
+        return "Customer{" + "cid=" + cid + ", name=" + name + ", phone=" + phone + ", address=" + address + ", email=" + email + ", account=" + account + ", status=" + status + '}';
     }
-    
+
 }

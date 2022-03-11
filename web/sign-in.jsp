@@ -26,9 +26,6 @@
         <title>TVShop</title>
     </head>
     <body>
-
-
-
         <div class="content">
             <div class="container" style="padding: 50px">
                 <div class="row">
