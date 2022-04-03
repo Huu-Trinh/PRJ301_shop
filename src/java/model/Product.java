@@ -9,13 +9,14 @@ public class Product {
     private int quantity;
     private double price;
     private String image,description;
-    private int status,cateID,sizeID;
+    private int status,cateID;
     private int promotion;
+    private double weight;
 
     public Product() {
     }
 
-    public Product(String pid, String pname, int quantity, double price, String image, String description, int status, int cateID, int sizeID, int promotion) {
+    public Product(String pid, String pname, int quantity, double price, String image, String description, int status, int cateID, int promotion, double weight) {
         this.pid = pid;
         this.pname = pname;
         this.quantity = quantity;
@@ -24,9 +25,10 @@ public class Product {
         this.description = description;
         this.status = status;
         this.cateID = cateID;
-        this.sizeID = sizeID;
         this.promotion = promotion;
+        this.weight = weight;
     }
+
 
     public String getPid() {
         return pid;
@@ -92,14 +94,6 @@ public class Product {
         this.cateID = cateID;
     }
 
-    public int getSizeID() {
-        return sizeID;
-    }
-
-    public void setSizeID(int sizeID) {
-        this.sizeID = sizeID;
-    }
-
     public int getPromotion() {
         return promotion;
     }
@@ -108,11 +102,16 @@ public class Product {
         this.promotion = promotion;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" + "pid=" + pid + ", pname=" + pname + ", quantity=" + quantity + ", price=" + price + ", image=" + image + ", description=" + description + ", status=" + status + ", cateID=" + cateID + ", sizeID=" + sizeID + ", promotion=" + promotion + '}';
+    public double getMeasure() {
+        return weight;
     }
 
-    
-    
+    public void setMeasure(double weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "pid=" + pid + ", pname=" + pname + ", quantity=" + quantity + ", price=" + price + ", image=" + image + ", description=" + description + ", status=" + status + ", cateID=" + cateID + ", promotion=" + promotion + ", weight=" + weight + '}';
+    }
 }

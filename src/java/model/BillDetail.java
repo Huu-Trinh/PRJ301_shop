@@ -7,18 +7,19 @@ package model;
 public class BillDetail {
 
     private String pid, oID;
-    private int quantity;
+    private int quantity,size;
     private double price, total;
 
     public BillDetail() {
     }
 
-    public BillDetail(String pid, String oID, int quantity, double price) {
+    public BillDetail(String pid, String oID, int quantity, int size, double price, double total) {
         this.pid = pid;
         this.oID = oID;
         this.quantity = quantity;
+        this.size = size;
         this.price = price;
-        this.total = price*quantity;
+        this.total = total;
     }
 
     public String getPid() {
@@ -45,6 +46,14 @@ public class BillDetail {
         this.quantity = quantity;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -54,7 +63,7 @@ public class BillDetail {
     }
 
     public double getTotal() {
-        return getQuantity()*getPrice();
+        return total;
     }
 
     public void setTotal(double total) {
@@ -63,7 +72,9 @@ public class BillDetail {
 
     @Override
     public String toString() {
-        return "BillDetail{" + "pid=" + pid + ", oID=" + oID + ", quantity=" + quantity + ", price=" + price + ", total=" + total + '}';
+        return "BillDetail{" + "pid=" + pid + ", oID=" + oID + ", quantity=" + quantity + ", size=" + size + ", price=" + price + ", total=" + total + '}';
     }
+
+    
     
 }

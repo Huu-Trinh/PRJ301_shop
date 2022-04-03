@@ -183,18 +183,18 @@
                     <c:forEach items="${requestScope.ListProduct}" var="product">
                         <div class="col-md-6 col-lg-3 ftco-animate">
                             <div class="product">
-                                <a href="#" class="img-prod"><img class="img-fluid" src="${product.image}" alt="Colorlib Template">
+                                <a href="productDetail?pid=${product.pid}" class="img-prod"><img class="img-fluid" src="${product.image}" alt="Colorlib Template">
 
                                     <c:if test="${product.promotion!=0}">
                                         <span class="status">${product.promotion}%</span>
                                     </c:if>
                                     <c:if test="${product.promotion==0}">
                                     </c:if>
-                                    
+
                                     <div class="overlay"></div>
                                 </a>
                                 <div class="text py-3 pb-4 px-3 text-center">
-                                    <h3><a href="#">${product.pname}</a></h3>
+                                    <h3><a href="productDetail?pid=${product.pid}">${product.pname}</a></h3>
                                     <div class="d-flex">
                                         <div class="pricing">
                                             <c:if test="${product.promotion!=0}">
@@ -207,12 +207,13 @@
                                     </div>
                                     <div class="bottom-area d-flex px-3">
                                         <div class="m-auto d-flex">
-                                            <a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                            <a href="productDetail?pid=${product.pid}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                 <span><i class="ion-ios-menu"></i></span>
                                             </a>
-                                            <a href="cart?id=${product.cateID}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                            <a data-name="${product.pname}" data-price="${product.price}" data-measure="${product.quantity*product.getMeasure()}" data-toggle="modal" data-target="#addCartShop" href="productDetail?pid=${product.pid}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                 <span><i class="ion-ios-cart"></i></span>
                                             </a>
+                                            <!--xu li sau ion-ios-heart-outline-->
                                             <a href="#" class="heart d-flex justify-content-center align-items-center ">
                                                 <span><i class="ion-ios-heart"></i></span>
                                             </a>
@@ -376,6 +377,8 @@
                 </div>
             </div>
         </section>
+        <script src="js/jsnew.js" type="text/javascript"></script>
+        <%@include file="./components/addcardshop.jsp" %>
         <%@include file="./components/footer.jsp" %>
     </body>
 </html>

@@ -125,4 +125,7 @@ public class AccountDAO extends DBContext {
         }
         return flag;
     }
+    public static void main(String[] args) {
+        System.out.println(new AccountDAO().getAllAccount());
+    }
 }
