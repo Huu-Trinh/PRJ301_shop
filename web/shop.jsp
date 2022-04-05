@@ -55,7 +55,7 @@
                         <ul class="product-category">
                             <li><a href="shop" class="active">All</a></li>
                                 <c:forEach items="${requestScope.ListCate}" var="cate">
-                                    <li><a href="productDetail?cateID=${cate.cateID}">${cate.cateName}</a></li>
+                                <li><a href="productDetail?cateID=${cate.cateID}">${cate.cateName}</a></li>
                                 </c:forEach>
                         </ul>
                     </div>
@@ -91,9 +91,17 @@
                                             <a href="productDetail?pid=${product.pid}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                 <span><i class="ion-ios-menu"></i></span>
                                             </a>
-                                            <a data-name="${product.pname}" data-price="${product.price}" data-measure="${product.quantity*product.getMeasure()}" data-toggle="modal" data-target="#addCartShop" href="productDetail?pid=${product.pid}" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                                <span><i class="ion-ios-cart"></i></span>
-                                            </a>
+
+                                            <c:if test="${product.promotion!=0}">
+                                                <a data-id="${product.pid}" data-uri="shop" data-name="${product.pname}" data-price="${product.price*product.promotion/100}" data-measure="${product.getMeasure()}" data-quantity="${product.quantity}" data-toggle="modal" data-target="#addCartShop" href="javascript:" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                                    <span><i class="ion-ios-cart"></i></span>
+                                                </a>
+                                            </c:if>
+                                            <c:if test="${product.promotion==0}">
+                                                <a data-id="${product.pid}" data-uri="shop" data-name="${product.pname}" data-price="${product.price}" data-measure="${product.getMeasure()}" data-quantity="${product.quantity}" data-toggle="modal" data-target="#addCartShop" href="javascript:" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                                    <span><i class="ion-ios-cart"></i></span>
+                                                </a>
+                                            </c:if>
                                             <!--xu li sau ion-ios-heart-outline-->
                                             <a href="#" class="heart d-flex justify-content-center align-items-center ">
                                                 <span><i class="ion-ios-heart"></i></span>

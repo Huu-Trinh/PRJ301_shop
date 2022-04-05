@@ -64,7 +64,7 @@
                     <li class="nav-item"><a href="shop" class="nav-link">Shop</a></li>
                     <li class="nav-item"><a href="about" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
-                    <li class="nav-item cta cta-colored"><a href="cart" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+                    <li class="nav-item cta cta-colored"><a href="cart" class="nav-link"><span class="icon-shopping_cart"></span>[${countCart}]</a></li>
                     <c:if test="${sessionScope.user==null}">
                         <li class="nav-item"><a href="signin" class="nav-link"><span class="icon-sign-in"></span></a></li>
                     </c:if>

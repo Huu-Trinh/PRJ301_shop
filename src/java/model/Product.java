@@ -11,6 +11,7 @@ public class Product {
     private String image,description;
     private int status,cateID;
     private int promotion;
+    private int size;
     private double weight;
 
     public Product() {
@@ -29,7 +30,22 @@ public class Product {
         this.weight = weight;
     }
 
+    public Product(String pid, String pname, int quantity, double price, String image, String description, int status, int cateID, int promotion, int size, double weight) {
+        this.pid = pid;
+        this.pname = pname;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.status = status;
+        this.cateID = cateID;
+        this.promotion = promotion;
+        this.size = size;
+        this.weight = weight;
+    }
 
+    
+    
     public String getPid() {
         return pid;
     }
@@ -108,6 +124,14 @@ public class Product {
 
     public void setMeasure(double weight) {
         this.weight = weight;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 
     @Override

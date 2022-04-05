@@ -48,132 +48,98 @@
                 </div>
             </div>
         </div>
+        <form method="Post" action="#">   
+            <section class="ftco-section ftco-cart">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 ftco-animate">
+                            <div class="cart-list">
+                                <table class="table">
+                                    <thead class="thead-primary">
+                                        <tr class="text-center">
+                                            <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
+                                            <th>Product name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%! double total = 0;
+                                            int i = 0;
+                                        %>
+                                        <c:forEach items="${listCart}" var="product"> 
+                                            <tr class="text-center">
 
-        <section class="ftco-section ftco-cart">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 ftco-animate">
-                        <div class="cart-list">
-                            <table class="table">
-                                <thead class="thead-primary">
-                                    <tr class="text-center">
-                                        <th>&nbsp;</th>
-                                        <th>&nbsp;</th>
-                                        <th>Product name</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-center">
-                                        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                                <td class="product-remove"><a href="delete-cart?pid=${product.pid}"><span class="ion-ios-close"></span></a></td>
 
-                                        <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
+                                                <td class="image-prod"><div class="img" style="background-image:url(${product.image});"></div></td>
 
-                                        <td class="product-name">
-                                            <h3>Bell Pepper</h3>
-                                            <p>Far far away, behind the word mountains, far from the countries</p>
-                                        </td>
+                                                <td class="product-name">
+                                                    <h3>${product.pname}</h3>
+                                                    <p>${product.description}</p>
+                                                </td>
+                                                
+                                                <td class="price">$${product.promotion!=0?product.price*product.promotion/100:product.price}</td>
 
-                                        <td class="price">$4.90</td>
+                                                <td class="quantity">
+                                                    <div class="input-group mb-3">
+                                                        <input onchange="updateQuantity(this)" type="text" name="quantity" class="quantity form-control input-number" value="${product.quantity}" min="1" max="100">
+                                                        <input type="hidden" name="total" value="${(product.promotion!=0?product.price*product.promotion/100:product.price)*product.quantity}"/> 
+                                                    </div>
+                                                </td>
 
-                                        <td class="quantity">
-                                            <div class="input-group mb-3">
-                                                <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                            </div>
-                                        </td>
+                                                <td class="total">
+                                                    $${(product.promotion!=0?product.price*product.promotion/100:product.price)*product.quantity}
+                                                </td>
 
-                                        <td class="total">$4.90</td>
-                                    </tr><!-- END TR-->
+                                            </tr><!-- END TR-->
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                            <div class="cart-total mb-3">
+                                <h3>Coupon Code</h3>
+                                <p>Enter your coupon code if you have one</p>
+                                <form action="#" class="info">
+                                    <div class="form-group">
+                                        <label for="">Coupon code</label>
+                                        <input type="text" class="form-control text-left px-3" placeholder="">
+                                    </div>
+                                </form>
+                            </div>
+                            <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
+                        </div>
 
-                                    <tr class="text-center">
-                                        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-
-                                        <td class="image-prod"><div class="img" style="background-image:url(images/product-4.jpg);"></div></td>
-
-                                        <td class="product-name">
-                                            <h3>Bell Pepper</h3>
-                                            <p>Far far away, behind the word mountains, far from the countries</p>
-                                        </td>
-
-                                        <td class="price">$15.70</td>
-
-                                        <td class="quantity">
-                                            <div class="input-group mb-3">
-                                                <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                            </div>
-                                        </td>
-
-                                        <td class="total">$15.70</td>
-                                    </tr><!-- END TR-->
-                                </tbody>
-                            </table>
+                        <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                            <div class="cart-total mb-3">
+                                <h3>Cart Totals</h3>
+                                <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span id="subtotal">$20.60</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery</span>
+                                    
+                                    <span id="delivery">$0</span>
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    <span id="ftotal">$17.60</span>
+                                </p>
+                            </div>
+                            <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-end">
-                    <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                        <div class="cart-total mb-3">
-                            <h3>Coupon Code</h3>
-                            <p>Enter your coupon code if you have one</p>
-                            <form action="#" class="info">
-                                <div class="form-group">
-                                    <label for="">Coupon code</label>
-                                    <input type="text" class="form-control text-left px-3" placeholder="">
-                                </div>
-                            </form>
-                        </div>
-                        <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
-                    </div>
-                    <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                        <div class="cart-total mb-3">
-                            <h3>Estimate shipping and tax</h3>
-                            <p>Enter your destination to get a shipping estimate</p>
-                            <form action="#" class="info">
-                                <div class="form-group">
-                                    <label for="">Country</label>
-                                    <input type="text" class="form-control text-left px-3" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="country">State/Province</label>
-                                    <input type="text" class="form-control text-left px-3" placeholder="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="country">Zip/Postal Code</label>
-                                    <input type="text" class="form-control text-left px-3" placeholder="">
-                                </div>
-                            </form>
-                        </div>
-                        <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-                    </div>
-                    <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                        <div class="cart-total mb-3">
-                            <h3>Cart Totals</h3>
-                            <p class="d-flex">
-                                <span>Subtotal</span>
-                                <span>$20.60</span>
-                            </p>
-                            <p class="d-flex">
-                                <span>Delivery</span>
-                                <span>$0.00</span>
-                            </p>
-                            <p class="d-flex">
-                                <span>Discount</span>
-                                <span>$3.00</span>
-                            </p>
-                            <hr>
-                            <p class="d-flex total-price">
-                                <span>Total</span>
-                                <span>$17.60</span>
-                            </p>
-                        </div>
-                        <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+            </section>
+        </form>
         <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
             <div class="container py-4">
                 <div class="row d-flex justify-content-center py-5">

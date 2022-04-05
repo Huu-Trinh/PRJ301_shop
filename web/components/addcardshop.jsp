@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<form action="search" method="post">
+<form action="cart" method="post">
     <div class="modal fade" id="addCartShop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -17,6 +17,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <input type="hidden" name="pid" class="pid" value=""/>
+                    <input type="hidden" name="uri" class="uri" value=""/>
+                    <input type="hidden" name="Pquantity" class="quantity" value=""/>
                     <div class="col-12 product-details">
                         <p class="price"><span class="modal-price">$1</span></p>
                         <div class="row mt-4">
@@ -56,7 +59,7 @@
                 </div>
                 <div class="modal-footer">
                     <p><a href="javascript:"  class="btn btn-outline-danger py-3 px-5" data-dismiss="modal">Cancel</a></p>
-                    <p><a onclick="AddCard()" href="javascript:" class="btn btn-black py-3 px-5">Add to Cart</a></p>
+                    <p><input type="submit" onclick="AddCard()" href="javascript:" class="btn btn-black py-3 px-5" value="Add to Cart"></p>
                 </div>
             </div>
         </div>

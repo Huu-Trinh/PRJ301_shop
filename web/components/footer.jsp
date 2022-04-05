@@ -96,4 +96,5 @@
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
     <script src="js/modaljs.js" type="text/javascript"></script>
+    <script src="js/jsnew.js" type="text/javascript"></script>
 </html>
